@@ -54,5 +54,20 @@ namespace Tests
             //--Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void addNumbersTest()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            int expected = 5;
+
+            //--Act
+            int actual = calculator.add("1,3,3,-2");
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
