@@ -4,7 +4,7 @@
     public int add(String numbers)
     {
         if (string.IsNullOrEmpty(numbers)) return 0;
-        string[] number = numbers.Split(",");
+        string[] number = numbers.Split(',','\n');
         int result = 0;
         foreach(string numberItem in number)
         {

@@ -69,5 +69,20 @@ namespace Tests
             //--Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void addNumbersWithNewLineSeparatorTest()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            int expected = 2;
+
+            //--Act
+            int actual = calculator.add("1,3\n-2");
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
