@@ -84,5 +84,50 @@ namespace Tests
             //--Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void addNumbersWithDifferentDelimitersTest()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            int expected = 3;
+
+            //--Act
+            int actual = calculator.add("//;\n1;2");
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void addNumbersWithDifferentDelimitersTest2()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            int expected = 7;
+
+            //--Act
+            int actual = calculator.add("//;\n1;2;4");
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void addNumbersWithDifferentDelimitersTest3()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            int expected = 7;
+
+            //--Act
+            int actual = calculator.add("//;\n1;2\n4");
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
