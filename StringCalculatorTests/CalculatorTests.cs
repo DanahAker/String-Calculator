@@ -61,10 +61,10 @@ namespace Tests
             //--Arrange
             Calculator calculator = new Calculator();
 
-            int expected = 5;
+            int expected = 9;
 
             //--Act
-            int actual = calculator.add("1,3,3,-2");
+            int actual = calculator.add("1,3,3,2");
 
             //--Assert
             Assert.AreEqual(expected, actual);
@@ -76,10 +76,10 @@ namespace Tests
             //--Arrange
             Calculator calculator = new Calculator();
 
-            int expected = 2;
+            int expected = 6;
 
             //--Act
-            int actual = calculator.add("1,3\n-2");
+            int actual = calculator.add("1,3\n2");
 
             //--Assert
             Assert.AreEqual(expected, actual);
@@ -125,6 +125,36 @@ namespace Tests
 
             //--Act
             int actual = calculator.add("//;\n1;2\n4");
+
+            //--Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(Exception),"negatives not allowed: -1")]
+        
+        public void addNumbersWithNegativesTest()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            var expected = "negatives not allowed: -1";
+
+            //--Act
+            var actual = calculator.add("//;\n1;-1\n4");
+
+        }
+
+        [TestMethod()]
+        public void addNumbersWithBigNumbers()
+        {
+            //--Arrange
+            Calculator calculator = new Calculator();
+
+            int expected = 7;
+
+            //--Act
+            int actual = calculator.add("//;\n1;2;1001\n4");
 
             //--Assert
             Assert.AreEqual(expected, actual);
