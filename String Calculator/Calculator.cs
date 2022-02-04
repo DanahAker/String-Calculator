@@ -11,17 +11,23 @@ public class Calculator
             delimiter = numbers.ElementAt(2);
             numbers = numbers.Substring(4);
         }
-        string[] number = numbers.Split(delimiter, '\n'); 
+        string[] number = numbers.Split(delimiter, '\n');
 
 
-        int result=number.Select(stringNumber => Int32.Parse(stringNumber))
-                         .Where(number => number < 1000)
-                         .Aggregate(0, (count, val) => count + val);
+
+        var integerNumbers = number.Select(stringNumber => Int32.Parse(stringNumber));
+        var negatives = integerNumbers.Where(x => x < 0);
+        if (negatives.Count() != 0) throw new Exception($"negatives not allowed: {negatives}");
+        int result = integerNumbers.Where(number => number < 1000)   
+                                   .Sum(x=>x);
+
 
         return result;
+       
 
     }
 
+   
 
     private bool DelimiterIsProvided(string numbers)
     {
