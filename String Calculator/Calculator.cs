@@ -13,26 +13,15 @@ public class Calculator
         }
         string[] number = numbers.Split(delimiter, '\n'); 
 
-        int result = 0;
 
-        foreach (string numberItem in number)
-        {
-            int num = Int32.Parse(numberItem);
-            if(num< 0) Store(num);
-            if (num > 1000) continue;
-            result += num;
-        }
+        int result=number.Select(stringNumber => Int32.Parse(stringNumber))
+                         .Where(number => number < 1000)
+                         .Aggregate(0, (count, val) => count + val);
 
-        if (negatives.Count()!=0) throw new Exception($"negatives not allowed: {negatives}");
         return result;
 
     }
 
-    List<int> negatives = new List<int>();
-    private void Store(int num)
-    {
-        negatives.Add(num);
-    }
 
     private bool DelimiterIsProvided(string numbers)
     {
